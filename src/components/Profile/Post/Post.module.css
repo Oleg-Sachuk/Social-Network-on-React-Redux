@@ -1,0 +1,19 @@
+.postBlock{
+    padding: 10px;
+}
+
+.posts{
+    padding-top: 10px;
+}
+
+.postbtn {
+    background-color: #25D366;
+    border: none;
+    color: white;
+    font-weight: bold;
+    height: 50px;
+    width: 70px;
+    margin: 40px;
+    display: table;
+    margin: 0 auto;
+}

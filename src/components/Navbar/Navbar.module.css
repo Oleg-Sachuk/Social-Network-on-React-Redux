@@ -1,0 +1,28 @@
+.appNav{
+  margin-top: 20px;
+}
+
+.appNav li a{
+  font-weight: bold;
+  color: black;
+  text-decoration: none;
+  justify-content: center;
+  text-align: center;
+  height: 40px;
+  width: 120px; /* or whatever width you want. */
+  max-width: 120px; /* or whatever width you want. */
+  display: inline-block;
+  padding-top: 6px;
+}
+
+.appNav li {
+  border-bottom-style: none;
+  border-bottom-width: 3px;
+  margin: 10px;
+}
+
+.appNav li a.activelink{
+  font-weight: bolder;
+  color: white; 
+  background-color: #25D366;  
+}

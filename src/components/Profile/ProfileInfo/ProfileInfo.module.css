@@ -1,0 +1,123 @@
+.appContent img{
+    width: 1277;
+    height: 375;
+}
+
+.ppic{
+    position:absolute;
+    left: 60vh;
+    top: 70px;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+}
+
+.decriptionBlock{
+    padding: 10px;
+}
+
+.status {
+    display: table;
+    margin: 0 auto;
+}
+
+.about {
+    padding-top: 20px;
+    display: table;
+    margin: 0 auto;
+}
+
+.aboutCard {
+    border-color: #25D366 !important;
+    border-left-style: none !important;
+    border-right-style: none !important;
+    border-bottom-style: none !important;
+}
+
+.aboutCard p {
+    display: table;
+    margin: 0 auto;
+}
+
+.separator {
+    border: none; 
+    color: #25D366; 
+    background-color: rgb(37, 211, 102, 0.5);
+    height: 1.5px;
+}
+
+.name {
+    margin: 10px;
+    text-align: center;
+    display: table;
+    margin: 0 auto;
+    padding-top: 20px;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.positioning {
+    margin: 40px;
+    display: table;
+    margin: 0 auto;
+}
+
+.cover {
+    height: 150px;
+    width: 100%;
+    position:relative;
+    border-radius: 15px;
+    margin-bottom: 55px;
+}
+
+.employment {
+    position: relative;
+    display:  inline-block
+}
+
+.leftpart {
+    text-align: center;
+    border-right: solid;
+    border-right-color: rgb(255, 0, 0, 0.5);
+    border-right-width: 1px;
+}
+
+.rightpart {
+    position: absolute;
+    right: 0;
+}
+
+.cont {
+    text-align: center;
+}
+
+.jobdesc {
+    text-align: center;
+    margin: 20px;
+}
+
+.empRow {
+    display: inline-block;
+}
+
+.yesCircle {
+    justify-content: center;
+    background-color: green;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    margin-top: 4px;
+}
+
+.noCircle {
+    justify-content: center;
+    background-color: red;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    margin-top: 4px;
+}
+
+.mainContainer {
+    margin-top: 20px;
+}

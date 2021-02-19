@@ -1,0 +1,16 @@
+.footer {
+    background-color: #25D366;
+    color: white;
+    text-align: center;
+    height: 60px;
+    max-height: 60px;
+    font-size: 20px;
+    font-weight: bolder;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.footer p {
+    padding-top: 15px;
+    margin: 0 auto;
+}

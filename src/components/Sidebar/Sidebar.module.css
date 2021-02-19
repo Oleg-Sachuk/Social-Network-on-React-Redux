@@ -1,0 +1,40 @@
+.ppic {
+    position:absolute;
+    left: 33%;
+    top: 65px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.name {
+    display: table;
+    margin: 0 auto;
+    padding-top: 20px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.name span {
+    background-color: #25D366;
+    color: white;
+    padding: 10px;
+}
+
+.unsignedCard {
+    padding-top: 20px;
+    padding: 20px;
+    display: table;
+    margin: 0 auto;   
+}
+
+.unsignedCard button {
+    background-color: #25D366;
+    color: white;
+    border: none;
+}
+
+.signedContainer {
+    margin-top: 10px;
+    justify-content: center;
+}

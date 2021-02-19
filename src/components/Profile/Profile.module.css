@@ -1,0 +1,14 @@
+.appContent img{
+    width: 1277;
+    height: 375;
+}
+
+.ppic{
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+}
+
+.profileBlock{
+    padding-left: 10px;
+}
