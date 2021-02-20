@@ -24,6 +24,17 @@ const authReducer = (state = initialstate ,action) => {
                 loggedId: action.userId
             }
         }
+        case 'CONFIRM-AUTH': {            
+            return {
+                ...state,
+                isFetching: true
+            }
+        }
+        case 'TOGGLE-IS-FETCHING':
+            return {
+                ...state,
+                isFetching: action.isFetching
+            }
         default: return state;
     }
 }
@@ -36,6 +47,14 @@ export const VerifyAuthUserData = (userId) => ({
     type: 'LOGGED-USER-DATA', userId
 })
 
+export const ConfirmAuth = () => ({
+    type: 'CONFIRM-AUTH'
+})
+
+export const setisFetching = (isFetching) => ({
+    type: 'TOGGLE-IS-FETCHING', isFetching
+})
+
 export const getAuthThunk = () => {
     return (dispatch) => {
         AuthAPI.getAuth().then(data => {
@@ -43,6 +62,18 @@ export const getAuthThunk = () => {
                 let {id, email, login} = data.data;
                 dispatch(VerifyAuthUserData(id));
                 dispatch(SetAuthUserData(id, email, login));
+            }
+        })
+    }
+
+}
+export const getSignIn = (userinfo) => {
+    return (dispatch) => {
+        dispatch(setisFetching(true));
+        AuthAPI.AuthoriseUser(userinfo).then(data => {
+            if(data.resultCode === 0){
+                dispatch(ConfirmAuth);
+                dispatch(setisFetching(false));
             }
         })
     }
