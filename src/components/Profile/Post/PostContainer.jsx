@@ -1,6 +1,6 @@
 // import React from 'react';
 import Post from './Post';
-import { AddPostActionCreator, UpdatePostTextActionCreator } from "../../../redux/profile-reducer";
+import { AddPostActionCreator } from "../../../redux/profile-reducer";
 import { connect } from 'react-redux';
 
 let mapStateToProps = (state) => {
@@ -11,13 +11,9 @@ let mapStateToProps = (state) => {
 }
 let mapDispatchToProps = (dispatch) => {
     return {
-        UpdatePostText: (text) => {
-            let action = UpdatePostTextActionCreator(text);
-            dispatch(action);
-        },
         addPost: (text) => {
             if (text) {
-                dispatch(AddPostActionCreator());
+                dispatch(AddPostActionCreator(text));
             } else {
                 alert('The field is empty')
             }

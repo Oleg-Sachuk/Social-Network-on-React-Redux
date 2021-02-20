@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { AuthRedirect } from '../../hoc/AuthRedirect';
-import { SendMessageCreator, UpdateMessageBodyCreator } from "../../redux/dialogs-reducer";
+import { SendMessageCreator } from "../../redux/dialogs-reducer";
 import Dialog from './Dialogs';
 
 class DialogsPageAPI extends React.Component {
@@ -22,12 +22,9 @@ let mapStateToProps = (state) => {
 }
 let mapDispatchToProps = (dispatch) => {
     return {
-        updateMessageBody: (body) => {
-            dispatch(UpdateMessageBodyCreator(body));
-        },
         SendMessage: (body) => {
             if(body){
-                dispatch(SendMessageCreator())
+                dispatch(SendMessageCreator(body))
             } else {
                 alert('Message field is empty')
             }

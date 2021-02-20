@@ -1,6 +1,6 @@
 .headContainer {
-    background-color: white;
-    border-style: solid;
+    background-color: #25D366;
+    border-style: none;
     border-width: 2px;
     border-color: black;
     margin-top: 50px;
@@ -10,8 +10,8 @@
 }
 
 .footContainer {
-    background-color: white;
-    border-style: solid;
+    background-color: #25D366;
+    border-style: none;
     border-width: 2px;
     border-color: black;
     margin-bottom: 50px;
@@ -40,14 +40,16 @@
     padding-top: 30px;
     padding-left: 20px;
     padding-right: 20px;
-    border-style: solid;
+    border-style: none;
     border-top-style: none;
     border-bottom-style: none;
-    border-width: 2px;
+    border-width: 1px;
     border-color: black;
+    background-color: #A6ECE0;
 }
 
 .mainForm button {
+    color: white;
     margin-bottom: 2rem;
     background-color: #25D366;
     border-color: #25D366;

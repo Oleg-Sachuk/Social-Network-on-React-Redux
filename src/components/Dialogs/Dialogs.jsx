@@ -3,24 +3,13 @@ import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
 import style from './Dialogs.module.css';
 import { Col, Container, Row } from 'react-bootstrap';
+import Messenger from './MessageSender/Messager';
 
 const Dialog = (props) => {
     let state = props.dialogPage;
 
     let DialogElements = state.dialogData.map(dialog => <DialogItem name={dialog.name} key={dialog.id} id={dialog.id} />);
     let MessageElements = state.messageData.map(unit => <Message message={unit.message} key={unit.id} />);
-
-    let addNewMessage = React.createRef();
-
-    let messageHandler = () => {
-        let body = addNewMessage.current.value;
-        props.SendMessage(body);
-    }
-
-    let onBodyChange = () => {
-        let body = addNewMessage.current.value;
-        props.updateMessageBody(body);
-    }
 
     return (
         <Container fluid>
@@ -33,10 +22,7 @@ const Dialog = (props) => {
                     <div className={style.chat} >
                         {MessageElements}
                     </div>
-                    <div className="form-group">
-                        <textarea className="form-control" placeholder="Message" ref={addNewMessage} onChange={onBodyChange} value={state.newMessageBody}></textarea>
-                    </div>
-                    <button className={style.submitbtn} onClick={messageHandler}>Send message</button>
+                    <Messenger {...props} />
                 </Col>
             </Row>
         </Container>
