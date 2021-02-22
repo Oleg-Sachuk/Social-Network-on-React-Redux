@@ -11,23 +11,18 @@ let initialstate = {
 
 const authReducer = (state = initialstate ,action) => {
     switch (action.type) {
-        case 'SET-USER-DATA': {            
+        case 'SET-USER-DATA': {  
+            debugger;          
             return {
                 ...state,
                 ...action.data,
-                isAuth: true
+                isAuth: action.data.isAuth
             }
         }
         case 'LOGGED-USER-DATA': {            
             return {
                 ...state,
                 loggedId: action.userId
-            }
-        }
-        case 'CONFIRM-AUTH': {            
-            return {
-                ...state,
-                isFetching: true
             }
         }
         case 'TOGGLE-IS-FETCHING':
@@ -39,16 +34,12 @@ const authReducer = (state = initialstate ,action) => {
     }
 }
 
-export const SetAuthUserData = (userId, email, login) => ({
-    type: 'SET-USER-DATA', data: {userId, email, login}
+export const SetAuthUserData = (userId, email, login, isAuth) => ({
+    type: 'SET-USER-DATA', data: {userId, email, login, isAuth}
 })
 
 export const VerifyAuthUserData = (userId) => ({
     type: 'LOGGED-USER-DATA', userId
-})
-
-export const ConfirmAuth = () => ({
-    type: 'CONFIRM-AUTH'
 })
 
 export const setisFetching = (isFetching) => ({
@@ -61,7 +52,7 @@ export const getAuthThunk = () => {
             if(data.resultCode === 0){
                 let {id, email, login} = data.data;
                 dispatch(VerifyAuthUserData(id));
-                dispatch(SetAuthUserData(id, email, login));
+                dispatch(SetAuthUserData(id, email, login, true));
             }
         })
     }
@@ -72,7 +63,19 @@ export const getSignIn = (userinfo) => {
         dispatch(setisFetching(true));
         AuthAPI.AuthoriseUser(userinfo).then(data => {
             if(data.resultCode === 0){
-                dispatch(ConfirmAuth);
+                dispatch(getAuthThunk());
+                dispatch(setisFetching(false));
+            }
+        })
+    }
+}
+
+export const getSignOut = () => {
+    return (dispatch) => {
+        dispatch(setisFetching(true));
+        AuthAPI.LogOutUser().then(data => {
+            if(data.resultCode === 0){
+                dispatch(SetAuthUserData(null,null,null,false));
                 dispatch(setisFetching(false));
             }
         })

@@ -3,7 +3,7 @@ import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
 import style from './Dialogs.module.css';
 import { Col, Container, Row } from 'react-bootstrap';
-import Messenger from './MessageSender/Messager';
+import Messenger from './MessageSender/Messenger';
 
 const Dialog = (props) => {
     let state = props.dialogPage;

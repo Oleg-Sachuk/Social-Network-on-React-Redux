@@ -1,55 +1,72 @@
 import React from 'react';
-import { Col, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import { Field, Form } from 'react-final-form';
+import { maxLength, minValue, required } from '../../utils/validators/validators';
+import Textarea from '../Common/Textarea';
 import style from './Login.module.css';
 
+const composeValidators = (...validators) => value =>
+    validators.reduce((error, validator) => error || validator(value), undefined)
 
 const SignInForm = (props) => {
     return (
-        <div className={style.mainForm}>
-            <Form
-                onSubmit={formData => {
-                    props.getSignIn(formData);
-                    console.log(formData);
-                }}
-            >
-                {({ handleSubmit, pristine, submitting }) => (
-                    <form onSubmit={handleSubmit}>
-                        <Row>
-                            <Col sm={2}>
-                                <label>E-mail</label>
-                            </Col>
-                            <Col sm={10}>
-                                <div>
-                                    <Field type={'email'} placeholder={'email'} name={'email'} component={'input'} />
-                                </div>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col sm={2}>
-                                <label>Password</label>
-                            </Col>
-                            <Col sm={10}>
-                                <div>
-                                    <Field type={'password'} placeholder={'password'} name={'password'} component={'input'} />
-                                </div>
-                            </Col>
-                        </Row>
-                        <Row className={style.lastRow}>
-                            <Col sm={{ span: 10, offset: 2 }}>
-                                <div>
-                                    <Field type={'checkbox'} className={style.customCheckbox} id="rememberMe" name={'rememberMe'} component={'input'} />
-                                    <label htmlFor="rememberMe">Remember me</label>
-                                </div>
-                                <div>
-                                    <button disabled={pristine || submitting}>Sign In</button>
-                                </div>
-                            </Col>
-                        </Row>
-                    </form>
-                )}
-            </Form>
-        </div>
+        <Container className={style.mainContainer}>
+            <div className={style.headContainer}>
+                <div>
+                    <h3>LOGIN</h3>
+                </div>
+            </div>
+            <div className={style.mainForm}>
+                <Form
+                    onSubmit={formData => {
+                        props.getSignIn(formData);
+                    }}
+                >
+                    {({ handleSubmit, pristine, submitting }) => (
+                        <form onSubmit={handleSubmit}>
+                            <Row>
+                                <Col sm={2}>
+                                    <label>E-mail</label>
+                                </Col>
+                                <Col sm={10}>
+                                    <div>
+                                        <Field type={'email'} placeholder={'email'} name={'email'} component={Textarea}
+                                            validate={composeValidators(required, maxLength(20), minValue(6))} />
+                                    </div>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col sm={2}>
+                                    <label>Password</label>
+                                </Col>
+                                <Col sm={10}>
+                                    <div>
+                                        <Field type={'password'} placeholder={'password'} name={'password'} component={Textarea}
+                                            validate={composeValidators(required, maxLength(20), minValue(6))} />
+                                    </div>
+                                </Col>
+                            </Row>
+                            <Row className={style.lastRow}>
+                                <Col sm={{ span: 10, offset: 2 }}>
+                                    <div>
+                                        <Field type={'checkbox'} className={style.customCheckbox} id="rememberMe" name={'rememberMe'} component={'input'} />
+                                        <label htmlFor="rememberMe">Remember me</label>
+                                    </div>
+                                    <div>
+                                        <button disabled={pristine || submitting}>Sign In</button>
+                                    </div>
+                                </Col>
+                            </Row>
+                        </form>
+                    )}
+                </Form>
+            </div>
+            <div className={style.footContainer}>
+                <div>
+                    <h5>Fill this form to go on</h5>
+                </div>
+            </div>
+        </Container>
     )
 }
 

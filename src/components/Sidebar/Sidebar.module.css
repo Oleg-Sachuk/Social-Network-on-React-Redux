@@ -38,3 +38,13 @@
     margin-top: 10px;
     justify-content: center;
 }
+
+.signedContainer button {
+    display: table;
+    margin: 0 auto;
+    margin-top: 90px;
+    justify-content: center;
+    background-color: #25D366;
+    color: white;
+    border-color: #25D366;
+}

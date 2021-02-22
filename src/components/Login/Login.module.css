@@ -1,5 +1,5 @@
 .headContainer {
-    background-color: #25D366;
+    background-color: #25d365af;
     border-style: none;
     border-width: 2px;
     border-color: black;
@@ -10,7 +10,7 @@
 }
 
 .footContainer {
-    background-color: #25D366;
+    background-color: #25d365af;
     border-style: none;
     border-width: 2px;
     border-color: black;
@@ -45,7 +45,7 @@
     border-bottom-style: none;
     border-width: 1px;
     border-color: black;
-    background-color: #A6ECE0;
+    background-color: #48928bc0;
 }
 
 .mainForm button {
@@ -107,4 +107,24 @@
 
 .mainContainer {
     height: 100vh;
+}
+
+.signoutCard{
+    margin-top: 10vh;
+    display: block;
+    margin-left: auto;
+    margin-right: auto; 
+    width:60vh;
+    height: 100vh;
+}
+
+.signoutCard button {
+    background-color: #25D366;
+    border: solid #25D366 1px;
+}
+
+.signoutCard button:hover {
+    background-color: #128C7E;
+    border: solid #128C7E 1px;
+    cursor: pointer;
 }
