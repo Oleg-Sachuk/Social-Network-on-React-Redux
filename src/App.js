@@ -14,13 +14,25 @@ import HeaderContainer from './components/Header/HeaderContainer';
 import SidebarContainer from './components/Sidebar/SidebarContainer';
 import Login from './components/Login/Login';
 import Footer from './components/Footer/Footer';
+import { Component } from 'react';
+import { InitializeApp } from "./redux/app-reducer";
+import { connect } from 'react-redux';
+import Loader from './assets/GIFs/Loader';
 
+class App extends Component {
+  
+  componentDidMount(){
+    this.props.InitializeApp()
+  }
 
-function App(props) {
-  return (
-    <BrowserRouter>
-      <div className='app-wrapper'>
-        {/* <Container> */}
+  render() {
+    if(!this.props.initialized){
+      return <Loader />
+    }
+    return (
+      <BrowserRouter>
+        <div className='app-wrapper'>
+          {/* <Container> */}
           <HeaderContainer className={'headercol'} />
           <Row>
             <Col className={'navcol'}><Navbar /></Col>
@@ -38,10 +50,15 @@ function App(props) {
             <Col className='sidebar'><SidebarContainer /></Col>
           </Row>
           <Footer />
-        {/* </Container> */}
-      </div>
-    </BrowserRouter>
-  );
+          {/* </Container> */}
+        </div>
+      </BrowserRouter>
+    );
+  }
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  initialized: state.app.initialized
+})
+
+export default connect(mapStateToProps,{InitializeApp})(App);
