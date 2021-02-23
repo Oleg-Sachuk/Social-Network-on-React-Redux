@@ -6,6 +6,7 @@ import { setCurrentPage, getUsersThunk, getFollowingThunk, getUnfollowingThunk }
 import Loader from '../../assets/GIFs/Loader';
 import { compose } from 'redux';
 import { AuthRedirect } from '../../hoc/AuthRedirect';
+import { getAllUsers, getCurrentPage, getFollowingProgress, getIsFetching, getPageSize, getTotalUsersCount } from "../../utils/selectors/users-selectors";
 
 class UsersAPIComponent extends React.Component {
 
@@ -36,12 +37,12 @@ class UsersAPIComponent extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        users: state.usersPage.users,
-        pageSize: state.usersPage.pageSize,
-        totalUsersCount: state.usersPage.totalUsersCount,
-        currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching,
-        followingProgress: state.usersPage.followingProgress
+        users: getAllUsers(state),
+        pageSize: getPageSize(state),
+        totalUsersCount: getTotalUsersCount(state),
+        currentPage: getCurrentPage(state),
+        isFetching: getIsFetching(state),
+        followingProgress: getFollowingProgress(state)
     }
 }
 

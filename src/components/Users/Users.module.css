@@ -71,3 +71,25 @@
     width: 40px;
     margin: 3px;
 }
+
+.leftbtn {
+    border: none;
+    display: inline-block;
+    text-align: center;
+    color: white;
+    background-color: #25D366;
+    margin-right: 3px;
+
+}
+.rightbtn {
+    border: none;
+    display: inline-block;
+    text-align: center;
+    color: white;
+    background-color: #25D366;
+    margin-left: 4px;
+}
+
+.leftbtn:hover, .rightbtn:hover {
+    cursor: pointer;
+}

@@ -53,6 +53,7 @@ const Users = (props) => {
                 </div>)
             }
             <div className={style.paging}>
+                <button className={style.leftbtn} onClick={(e) => { props.onPageChanged(props.currentPage-1) }}>{"<<"}</button>
                 {
                     pages.map(page => {
                         if (page >= 1 && page <= pagesCount) {
@@ -63,6 +64,7 @@ const Users = (props) => {
                     })
                 }
                 <span onClick={(e) => { props.onPageChanged(pagesCount) }}>{` Out of: ${pagesCount}`}</span>
+                <button className={style.rightbtn} onClick={(e) => { props.onPageChanged(props.currentPage+1) }}>{">>"}</button>
             </div>
         </div>
     )
