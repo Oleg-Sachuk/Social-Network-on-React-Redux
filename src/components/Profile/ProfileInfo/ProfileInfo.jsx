@@ -5,7 +5,8 @@ import Loader from '../../../assets/GIFs/Loader';
 import cover from '../../../assets/images/bg_cover.jpg';
 import ContactTable from './ProfilePartials/ContactTable';
 import { Card, Col, Row } from 'react-bootstrap';
-import { ProfileStatus } from './ProfilePartials/ProfileStatus';
+// import { ProfileStatus } from './ProfilePartials/ProfileStatus';
+import ProfileStatusWithHooks from './ProfilePartials/ProfileStatusHooks';
 
 const ProfileInfo = (props) => {
     if (!props.profile) {
@@ -24,7 +25,7 @@ const ProfileInfo = (props) => {
             <div className={style.status}>
                 { props.profile.userId !== props.loggeduserid 
                 ? <span>{props.status}</span> 
-                : <ProfileStatus status={props.status} updateUsersStatus={props.updateUsersStatus}/>}
+                : <ProfileStatusWithHooks status={props.status} updateUsersStatus={props.updateUsersStatus}/>}
             </div>
             <div className={style.about}>
                 <Card className={style.aboutCard} body>
