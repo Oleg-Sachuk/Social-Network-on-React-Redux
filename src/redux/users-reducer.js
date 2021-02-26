@@ -97,37 +97,33 @@ export const setisFollowing = (isFetching, userId) => ({
 })
 
 export const getUsersThunk = (currentPage, pageSize) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(setisFetching(true));
-        UsersAPI.getUsers(currentPage, pageSize).then(data => {
-            dispatch(setisFetching(false));
-            dispatch(setUsers(data.items));
-            dispatch(setTotalUsersCount(data.totalCount));
-        })
+        let data = await UsersAPI.getUsers(currentPage, pageSize);
+        dispatch(setisFetching(false));
+        dispatch(setUsers(data.items));
+        dispatch(setTotalUsersCount(data.totalCount));
     }
 }
 
+const FolowUnfolowLogic = async (dispatch,userId,apiMethod,actionCreator) => {
+    dispatch(setisFollowing(true, userId));
+    let data = await apiMethod(userId);
+    if (data.resultCode === 0) {
+        dispatch(actionCreator(userId));
+    }
+    dispatch(setisFollowing(false, userId));
+}
+
 export const getUnfollowingThunk = (userId) => {
-    return (dispatch) => {
-        dispatch(setisFollowing(true, userId));
-        FollowAPI.getUnfollow(userId).then(data => {
-            if (data.resultCode === 0) {
-                dispatch(unfollow(userId));
-            }
-            dispatch(setisFollowing(false, userId));
-        })
+    return async (dispatch) => {
+        FolowUnfolowLogic(dispatch,userId,FollowAPI.getUnfollow.bind(FollowAPI),unfollow)
     }
 }
 
 export const getFollowingThunk = (userId) => {
-    return (dispatch) => {
-        dispatch(setisFollowing(true, userId));
-        FollowAPI.getFollow(userId).then(data => {
-            if (data.resultCode === 0) {
-                dispatch(follow(userId));
-            }
-            dispatch(setisFollowing(false, userId));
-        })
+    return async (dispatch) => {
+        FolowUnfolowLogic(dispatch,userId,FollowAPI.getFollow.bind(FollowAPI),follow)
     }
 }
 

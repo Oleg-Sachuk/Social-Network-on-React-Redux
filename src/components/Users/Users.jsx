@@ -12,7 +12,7 @@ const Users = (props) => {
     for (let i = props.currentPage - 3; i <= props.currentPage + 3; i++) {
         pages.push(i);
     }
-
+    debugger;
     return (
         <div>
             <h3 className={style.head}>Users:</h3>

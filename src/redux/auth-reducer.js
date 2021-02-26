@@ -46,37 +46,34 @@ export const setisFetching = (isFetching) => ({
     type: 'TOGGLE-IS-FETCHING', isFetching
 })
 
-export const getAuthThunk = () => (dispatch) => {
-    return AuthAPI.getAuth().then(data => {
-        if (data.resultCode === 0) {
-            let { id, email, login } = data.data;
-            dispatch(VerifyAuthUserData(id));
-            dispatch(SetAuthUserData(id, email, login, true));
-        }
-    })
+export const getAuthThunk = () => async (dispatch) => {
+    let data = await AuthAPI.getAuth()
+    if (data.resultCode === 0) {
+        let { id, email, login } = data.data;
+        dispatch(VerifyAuthUserData(id));
+        dispatch(SetAuthUserData(id, email, login, true));
+    }
 }
 
 export const getSignIn = (userinfo) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(setisFetching(true));
-        AuthAPI.AuthoriseUser(userinfo).then(data => {
+        let data = await AuthAPI.AuthoriseUser(userinfo);
             if (data.resultCode === 0) {
                 dispatch(getAuthThunk());
                 dispatch(setisFetching(false));
             }
-        })
     }
 }
 
 export const getSignOut = () => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(setisFetching(true));
-        AuthAPI.LogOutUser().then(data => {
+        let data = await AuthAPI.LogOutUser();
             if (data.resultCode === 0) {
                 dispatch(SetAuthUserData(null, null, null, false));
                 dispatch(setisFetching(false));
             }
-        })
     }
 }
 
