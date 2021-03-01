@@ -5,8 +5,6 @@ import Navbar from "./components/Navbar/Navbar";
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
-import DialogContainer from './components/Dialogs/DialogsContainer';
-import UsersContainer from './components/Users/UsersContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Col, Row } from 'react-bootstrap';
@@ -18,15 +16,18 @@ import { Component } from 'react';
 import { InitializeApp } from "./redux/app-reducer";
 import { connect } from 'react-redux';
 import Loader from './assets/GIFs/Loader';
+import { WithSuspence } from './hoc/WithSuspence';
+const DialogContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
+const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer'));
 
 class App extends Component {
-  
-  componentDidMount(){
+
+  componentDidMount() {
     this.props.InitializeApp()
   }
 
   render() {
-    if(!this.props.initialized){
+    if (!this.props.initialized) {
       return <Loader />
     }
     return (
@@ -39,8 +40,8 @@ class App extends Component {
             <Col xs={8} className={'middlecol'}>
               <div className='app_wrapper_content'>
                 <Route path='/profile/:userId?' render={() => <ProfileContainer />} />
-                <Route path='/dialogs' render={() => <DialogContainer />} />
-                <Route path='/users' render={() => <UsersContainer />} />
+                <Route path='/dialogs' render={WithSuspence(DialogContainer)} />
+                <Route path='/users' render={WithSuspence(UsersContainer)} />
                 <Route path='/news' component={News} />
                 <Route path='/music' component={Music} />
                 <Route path='/settings' component={Settings} />
@@ -61,4 +62,4 @@ const mapStateToProps = (state) => ({
   initialized: state.app.initialized
 })
 
-export default connect(mapStateToProps,{InitializeApp})(App);
+export default connect(mapStateToProps, { InitializeApp })(App);

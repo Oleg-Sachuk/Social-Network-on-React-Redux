@@ -72,6 +72,14 @@
     margin: 3px;
 }
 
+.pblock button{
+    border: none;
+    display: inline-block;
+    text-align: center;
+    color: white;
+    background-color: #25D366;
+}
+
 .leftbtn {
     border: none;
     display: inline-block;

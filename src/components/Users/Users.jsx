@@ -12,7 +12,6 @@ const Users = (props) => {
     for (let i = props.currentPage - 3; i <= props.currentPage + 3; i++) {
         pages.push(i);
     }
-    debugger;
     return (
         <div>
             <h3 className={style.head}>Users:</h3>
@@ -57,8 +56,8 @@ const Users = (props) => {
                 {
                     pages.map(page => {
                         if (page >= 1 && page <= pagesCount) {
-                            return <div className={style.pblock}><span className={props.currentPage === page && style.selected}
-                                onClick={(e) => { props.onPageChanged(page) }}>{page} </span></div>
+                            return <div className={style.pblock}><button className={props.currentPage === page && style.selected}
+                                onClick={(e) => { props.onPageChanged(page) }}>{page} </button></div>
                         } else
                             return null
                     })
