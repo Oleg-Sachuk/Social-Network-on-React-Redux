@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/social-network-page/static/css/main.e5affa13.chunk.css",
+    "main.js": "/social-network-page/static/js/main.2c718895.chunk.js",
+    "main.js.map": "/social-network-page/static/js/main.2c718895.chunk.js.map",
+    "runtime-main.js": "/social-network-page/static/js/runtime-main.be12e066.js",
+    "runtime-main.js.map": "/social-network-page/static/js/runtime-main.be12e066.js.map",
+    "static/css/2.150d169a.chunk.css": "/social-network-page/static/css/2.150d169a.chunk.css",
+    "static/js/2.323dd0f3.chunk.js": "/social-network-page/static/js/2.323dd0f3.chunk.js",
+    "static/js/2.323dd0f3.chunk.js.map": "/social-network-page/static/js/2.323dd0f3.chunk.js.map",
+    "static/css/3.c80d8a9b.chunk.css": "/social-network-page/static/css/3.c80d8a9b.chunk.css",
+    "static/js/3.57547a58.chunk.js": "/social-network-page/static/js/3.57547a58.chunk.js",
+    "static/js/3.57547a58.chunk.js.map": "/social-network-page/static/js/3.57547a58.chunk.js.map",
+    "static/css/4.1555e56f.chunk.css": "/social-network-page/static/css/4.1555e56f.chunk.css",
+    "static/js/4.90777ee9.chunk.js": "/social-network-page/static/js/4.90777ee9.chunk.js",
+    "static/js/4.90777ee9.chunk.js.map": "/social-network-page/static/js/4.90777ee9.chunk.js.map",
+    "static/js/5.78759c78.chunk.js": "/social-network-page/static/js/5.78759c78.chunk.js",
+    "static/js/5.78759c78.chunk.js.map": "/social-network-page/static/js/5.78759c78.chunk.js.map",
+    "index.html": "/social-network-page/index.html",
+    "static/css/2.150d169a.chunk.css.map": "/social-network-page/static/css/2.150d169a.chunk.css.map",
+    "static/css/3.c80d8a9b.chunk.css.map": "/social-network-page/static/css/3.c80d8a9b.chunk.css.map",
+    "static/css/4.1555e56f.chunk.css.map": "/social-network-page/static/css/4.1555e56f.chunk.css.map",
+    "static/css/main.e5affa13.chunk.css.map": "/social-network-page/static/css/main.e5affa13.chunk.css.map",
+    "static/js/2.323dd0f3.chunk.js.LICENSE.txt": "/social-network-page/static/js/2.323dd0f3.chunk.js.LICENSE.txt",
+    "static/media/bg_cover.74df571f.jpg": "/social-network-page/static/media/bg_cover.74df571f.jpg",
+    "static/media/laptop-user.png": "/social-network-page/static/media/laptop-user.a5f4c229.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.be12e066.js",
+    "static/css/2.150d169a.chunk.css",
+    "static/js/2.323dd0f3.chunk.js",
+    "static/css/main.e5affa13.chunk.css",
+    "static/js/main.2c718895.chunk.js"
+  ]
+}
