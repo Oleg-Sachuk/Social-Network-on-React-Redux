@@ -3,7 +3,7 @@
 # dependencies
 /node_modules
 /.pnp
-/assets
+/src/redux/state.js
 /config
 .pnp.js
 
