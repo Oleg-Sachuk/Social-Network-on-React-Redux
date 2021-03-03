@@ -6,7 +6,7 @@ import PostContainer from './Post/PostContainer';
 const Profile = (props) => {
     return (
         <div>
-            <ProfileInfo profile={props.profile} loggeduserid={props.loggeduserid}
+            <ProfileInfo profile={props.profile} savePic={props.savePic} loggeduserid={props.loggeduserid}
             status={props.status} updateUsersStatus={props.updateUsersStatus}/>
             <div className={style.profileBlock}>My posts:</div>
             <PostContainer />

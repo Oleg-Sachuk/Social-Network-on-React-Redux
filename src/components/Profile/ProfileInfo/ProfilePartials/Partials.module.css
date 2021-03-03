@@ -7,3 +7,48 @@
 .statusContainer {
     border-color: #25D366;
 }
+
+.inputWrapper {
+    width: 100%;
+    position: absolute;
+    margin-top: -3rem;
+    padding-left: 6rem;
+    text-align: center;
+}
+
+.inputFile {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+}
+
+input[disabled] + label {
+    opacity: 0.3;
+}
+
+.inputFileButton {
+    width: 100%;
+    max-width: 20px;
+    height: 20px;
+    background: #ffffff;
+    color: rgb(0, 0, 0);
+    font-size: 1.125rem;
+    font-weight: 700;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    border-radius: 3px;
+    text-align: center;
+    padding-left: 3px;
+    padding-bottom: 3px;
+    cursor: pointer;
+    margin: 0 auto;
+    border: 1px black;
+    border-style: solid;
+}

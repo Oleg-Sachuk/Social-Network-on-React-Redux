@@ -34,6 +34,13 @@ const profileReducer = (state = initialstate, action) => {
                 status: action.status
             }
         }
+        case 'SAVE-PROFILE-PICTURE': {
+            return {
+                ...state,
+                profile: {...state.profile, photos: action.photos}
+
+            }
+        }
         default: return state;
     }
 }
@@ -48,6 +55,10 @@ export const setUserProfile = (profile) => ({
 
 export const setUsersStatus = (status) => ({
     type: 'SET-USER-STATUS', status
+}
+)
+export const savePicSuccess = (photos) => ({
+    type: 'SAVE-PROFILE-PICTURE', photos
 })
 
 export const getProfileThunk = (id, loggeduserid) => {
@@ -64,7 +75,6 @@ export const getProfileThunk = (id, loggeduserid) => {
 export const getUsersStatus = (userId) => {
     return async (dispatch) => {
         let res = await ProfileAPI.getStatus(userId);
-        console.log(res);
         dispatch(setUsersStatus(res.data))
     }
 }
@@ -74,6 +84,15 @@ export const updateUsersStatus = (newStatus) => {
         let data = await ProfileAPI.changeProfileStatus(newStatus);
         if (data.resultCode === 0) {
             dispatch(setUsersStatus(newStatus));
+        }
+    }
+}
+
+export const savePic = (file) => {
+    return async (dispatch) => {
+        let data = await ProfileAPI.savePic(file);
+        if (data.resultCode === 0) {
+            dispatch(savePicSuccess(data.data.photos));
         }
     }
 }
