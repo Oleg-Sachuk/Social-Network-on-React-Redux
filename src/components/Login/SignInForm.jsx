@@ -57,6 +57,9 @@ const SignInForm = (props) => {
                                     </div>
                                 </Col>
                             </Row>
+                            {props.captchaUrl && <img src={props.captchaUrl} alt={'captcha'}/>}
+                            {props.captchaUrl && <Field type={'input'} name={'captcha'} component={Textarea}
+                            validate={composeValidators(required, maxLength(10), minValue(2))} />}
                         </form>
                     )}
                 </Form>

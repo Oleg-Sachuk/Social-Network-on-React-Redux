@@ -1,4 +1,4 @@
-import { AuthAPI } from "../api/api";
+import { AuthAPI, SecurityAPI } from "../api/api";
 
 let initialstate = {
     userId: null,
@@ -6,7 +6,8 @@ let initialstate = {
     email: null,
     login: null,
     isFetching: false,
-    isAuth: false
+    isAuth: false,
+    captchaUrl: null
 }
 
 const authReducer = (state = initialstate, action) => {
@@ -29,6 +30,11 @@ const authReducer = (state = initialstate, action) => {
                 ...state,
                 isFetching: action.isFetching
             }
+        case 'GET-CAPTCHA-URL':
+            return {
+                ...state,
+                captchaUrl: action.url
+            }
         default: return state;
     }
 }
@@ -43,6 +49,10 @@ export const VerifyAuthUserData = (userId) => ({
 
 export const setisFetching = (isFetching) => ({
     type: 'TOGGLE-IS-FETCHING', isFetching
+})
+
+export const getCaptchaUrlSuccess = (url) => ({
+    type: 'GET-CAPTCHA-URL', url
 })
 
 export const getAuthThunk = () => async (dispatch) => {
@@ -61,7 +71,19 @@ export const getSignIn = (userinfo) => {
             if (data.resultCode === 0) {
                 dispatch(getAuthThunk());
                 dispatch(setisFetching(false));
+            } else {
+                if(data.resultCode === 10) {
+                    dispatch(getCaptchaURL());
+                }
             }
+    }
+}
+
+export const getCaptchaURL = () => {
+    return async (dispatch) => {
+        const data = await SecurityAPI.getCaptcha();
+        const captchaUrl = data.url;
+        dispatch(getCaptchaUrlSuccess(captchaUrl));
     }
 }
 

@@ -22,7 +22,8 @@ const Login = (props) => {
 let mapStateToProps = (state) => {
     return {
         isFetching: state.auth.isFetching,
-        isAuth: state.auth.isAuth
+        isAuth: state.auth.isAuth,
+        captchaUrl: state.auth.captchaUrl
     }
 }
 

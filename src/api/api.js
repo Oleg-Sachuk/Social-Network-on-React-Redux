@@ -92,3 +92,12 @@ export const ProfileAPI = {
         })
     }
 }
+
+export const SecurityAPI = {
+    getCaptcha() {
+        return instance.get(`security/get-captcha-url`)
+        .then (response => {
+            return response.data;
+        })
+    }
+}
