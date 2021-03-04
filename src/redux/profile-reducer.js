@@ -41,6 +41,13 @@ const profileReducer = (state = initialstate, action) => {
 
             }
         }
+        case 'SAVE-PROFILE-DATA': {
+            return {
+                ...state,
+                profile: {...state.profile, ...action.profileData}
+
+            }
+        }
         default: return state;
     }
 }
@@ -59,6 +66,10 @@ export const setUsersStatus = (status) => ({
 )
 export const savePicSuccess = (photos) => ({
     type: 'SAVE-PROFILE-PICTURE', photos
+})
+
+export const saveProfileSuccess = (profileData) => ({
+    type: 'SAVE-PROFILE-DATA', profileData
 })
 
 export const getProfileThunk = (id, loggeduserid) => {
@@ -93,6 +104,16 @@ export const savePic = (file) => {
         let data = await ProfileAPI.savePic(file);
         if (data.resultCode === 0) {
             dispatch(savePicSuccess(data.data.photos));
+        }
+    }
+}
+
+export const saveProfile = (profile,loggeduserid) => {
+    return async (dispatch) => {
+        let data = await ProfileAPI.saveProfile(profile);
+        if (data.resultCode === 0) {
+            dispatch(saveProfileSuccess(profile));
+            dispatch(getProfileThunk(loggeduserid,loggeduserid))
         }
     }
 }

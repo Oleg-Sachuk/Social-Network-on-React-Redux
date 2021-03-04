@@ -1,19 +1,22 @@
 import React from 'react';
 import style from './ProfileInfo.module.css';
 import ppic from '../../../assets/images/laptop-user.png'
-import Loader from '../../../assets/GIFs/Loader';
 import cover from '../../../assets/images/bg_cover.jpg';
-import ContactTable from './ProfilePartials/ContactTable';
-import { Card, Col, Row } from 'react-bootstrap';
-// import { ProfileStatus } from './ProfilePartials/ProfileStatus';
-import ProfileStatusWithHooks from './ProfilePartials/ProfileStatusHooks';
+import ProfileInfoEdit from './ProfileInfoEdit';
+import ProfileInfoDefault from './ProfileInfoDefault';
+import Loader from '../../../assets/GIFs/Loader';
+import { useState } from 'react';
 import { ProfilePicInput } from './ProfilePartials/ProfilePicInput';
+import ProfileStatusWithHooks from './ProfilePartials/ProfileStatusHooks';
 
 const ProfileInfo = (props) => {
+
+    let [editMode,setEditMode] = useState(false);
+
+
     if (!props.profile) {
         return <Loader />
     }
-    let contacts = { ...props.profile.contacts };
 
     return (
         <div className={style.mainContainer}>
@@ -28,26 +31,13 @@ const ProfileInfo = (props) => {
             <div className={style.status}>
                 {props.profile.userId !== props.loggeduserid
                     ? <span>{props.status}</span>
-                    : <ProfileStatusWithHooks status={props.status} updateUsersStatus={props.updateUsersStatus} />}
+                    : <ProfileStatusWithHooks status={props.status} updateUsersStatus={props.updateUsersStatus} />
+                }
             </div>
-            <div className={style.about}>
-                <Card className={style.aboutCard} body>
-                    <p>About Me:</p>
-                    <span>{props.profile.aboutMe}</span>
-                </Card>
-            </div>
-            <hr className={style.separator} />
-            <ContactTable contacts={contacts} />
-            <Card className={style.employment}>
-                <Row className={style.empRow}>
-                    <Col><div className={style.leftpart}>Looking for a Job:</div></Col>
-                    {props.profile.lookingForAJob
-                        ? <Col className={style.cont} style={{ textAlign: 'bottom' }} ><div className={style.yesCircle}></div></Col>
-                        : <Col className={style.cont} style={{ textAlign: 'bottom' }} ><div className={style.noCircle}></div></Col>}
-                </Row>
-            </Card>
-            <Card body><div className={style.jobdesc}>{props.profile.lookingForAJobDescription}</div></Card>
-            <hr className={style.separator} />
+            {editMode 
+            ? <ProfileInfoEdit saveProfile={props.saveProfile} goToDefaultMode={ () => {setEditMode(false)}} {...props} /> 
+            : <ProfileInfoDefault goToEditMode={ () => {setEditMode(true)}} {...props} />
+            }
         </div>
     )
 }
