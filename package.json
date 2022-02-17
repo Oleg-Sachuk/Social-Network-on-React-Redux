@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "https://oleg-sachuk.github.io/Social-Network-on-React-Redux",
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^11.2.3",
     "@testing-library/user-event": "^12.6.2",
     "axios": "^0.21.1",
